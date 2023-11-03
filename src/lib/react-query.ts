@@ -13,7 +13,13 @@ import { QueryClient } from "@tanstack/react-query";
 // };
 
 // export const queryClient = new QueryClient({ defaultOptions: queryConfig });
-export const queryClient = new QueryClient();
+export const queryClient = new QueryClient({
+    defaultOptions: {
+        queries: {
+          refetchOnWindowFocus: false, // default: true
+        },
+      }
+});
 
 // export type ExtractFnReturnType<FnType extends (...args: any) => any> = PromiseValue<
 //   ReturnType<FnType>

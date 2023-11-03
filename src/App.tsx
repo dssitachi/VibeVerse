@@ -1,16 +1,12 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Layout from "./pages/Layout";
-import Feed from "./pages/Feed";
+import { AppProvider } from "./providers/app";
+import { AppRoutes } from "./routes";
+
 
 function App() {
     return (
-        <BrowserRouter>
-            <Routes>
-                <Route path="/" element={<Layout />}>
-                    <Route path="" element={<Feed />} />
-                </Route>
-            </Routes>
-        </BrowserRouter>
+        <AppProvider>
+            <AppRoutes />
+        </AppProvider>
     );
 }
 

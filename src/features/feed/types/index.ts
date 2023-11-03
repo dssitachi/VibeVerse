@@ -2,7 +2,7 @@ import { BaseEntity } from '@/types';
 
 export type Post = {
   body: string;
-  authorId: string;
+  author: string;
   createdAt: Date;
   likes: number;
   retweets: number;

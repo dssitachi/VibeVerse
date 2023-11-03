@@ -19,7 +19,7 @@ function Navbar() {
                 <li className="p-4">
                     <NavLink to="/bookmark" className={`flex items-center`}>
                         <span className="inline-block">
-                            {" "}
+                            
                             <Bookmark />
                         </span>
                         <span className="hidden xl:block ml-4 font-semibold">
@@ -30,7 +30,7 @@ function Navbar() {
                 <li className="p-4">
                     <NavLink to="/profile" className={`flex items-center`}>
                         <span className="inline-block">
-                            {" "}
+                            
                             <User2 />
                         </span>
                         <span className="hidden xl:block ml-4 font-semibold">
@@ -46,7 +46,7 @@ function Navbar() {
                 >
                     <NavLink to="/login" className={`flex items-center`}>
                         <span className="inline-block">
-                            {" "}
+                        
                             <LogOut />
                         </span>
                         <span className="hidden xl:block ml-4 font-semibold">

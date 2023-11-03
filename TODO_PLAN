@@ -1,1 +1,9 @@
 We will use tanStack query for state management 
+
+Optimistic updates for likes 
+
+
+When I call next page ( on reaching the bottom tweet ), it should fire a new request
+
+either create a backend or use msw
+

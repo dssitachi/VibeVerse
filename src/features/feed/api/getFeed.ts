@@ -1,18 +1,19 @@
-export default (req: any, res: any) => {
-    const cursor = parseInt(req.query.cursor) || 0
-    const pageSize = 4
+import { axios } from "@/lib/axios";
+import { useInfiniteQuery } from "@tanstack/react-query";
 
-    const data = Array(pageSize)
-        .fill(0)
-        .map((_, i) => {
-            return {
-                name: 'Project ' + (i + cursor) + ` (server time: ${Date.now()})`,
-                id: i + cursor,
-            }
-        })
 
-    const nextId = cursor < 20 ? data[data.length - 1].id + 1 : null
-    const previousId = cursor > -20 ? data[0].id - pageSize : null
+async function fetchPosts ({ pageParam }: { pageParam: number} )  {
+    const res = await axios.get('/api/posts?cursor=' + pageParam)
+    return { posts: res.data.posts, next: res.data.next }
+}
 
-    setTimeout(() => res.json({ data, nextId, previousId }), 300)
+type PostResponse = { next?: number; posts: any[] }
+
+export function useFeed() {
+    return useInfiniteQuery({
+        queryKey: ['projects'],
+        queryFn: fetchPosts,
+        initialPageParam: 0,
+        getNextPageParam: (lastPage, pages) => {return lastPage.next}
+    });
 }
