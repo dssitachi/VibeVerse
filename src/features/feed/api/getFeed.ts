@@ -11,7 +11,7 @@ type PostResponse = { next?: number; posts: any[] }
 
 export function useFeed() {
     return useInfiniteQuery({
-        queryKey: ['projects'],
+        queryKey: ['feed'],
         queryFn: fetchPosts,
         initialPageParam: 0,
         getNextPageParam: (lastPage, pages) => {return lastPage.next}

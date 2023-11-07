@@ -77,12 +77,11 @@ function Navbar() {
                 </div>
                 <div className="hidden xl:flex flex-col">
                     <span className="text-sm font-semibold">
-                        {" "}
-                        {/* {`${user.firstName} ${user.lastName}`}{" "} */}
+                        John Doe
                     </span>
                     <span className="text-sm  text-gray-400">
-                        {" "}
-                        {/* {user.username}{" "} */}
+                        
+                        @JohnDoe
                     </span>
                 </div>
             </div>

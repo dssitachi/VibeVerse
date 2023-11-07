@@ -20,7 +20,7 @@ function createRandomUser(): Post {
         username: faker.internet.userName(),
         likesCount: faker.number.int({ min: 1, max: 100}),
         commentsCount: faker.number.int({min: 1, max: 70}),
-        body: faker.lorem.sentence(),
+        body: faker.lorem.sentence({min: 20, max: 40}),
     };
 }
 

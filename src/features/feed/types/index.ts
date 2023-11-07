@@ -1,9 +1,12 @@
 import { BaseEntity } from '@/types';
 
 export type Post = {
+  id: string;
+  name: string;
+  username: string;
   body: string;
-  author: string;
-  createdAt: Date;
-  likes: number;
-  retweets: number;
-} & BaseEntity;
+  imageUrl?: string;
+  likesCount: number;
+  commentsCount: number;
+  avatar: string;
+}
