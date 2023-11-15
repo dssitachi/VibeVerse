@@ -3,10 +3,11 @@ import { Landing } from "@/features/misc";
 import Navbar from "@/components/Navbar";
 import Suggestions from "@/components/Suggestions";
 import { Feed } from "@/features/feed";
+import { publicRoutes } from "./public";
 
 export const AppRoutes = () => {
     const commonRoutes = [{ path: "/auth", element: <Landing /> }];
-    const element = useRoutes([...commonRoutes, ...protectedRoutes]);
+    const element = useRoutes([...publicRoutes, ...protectedRoutes]);
 
     return <>{element}</>;
 };

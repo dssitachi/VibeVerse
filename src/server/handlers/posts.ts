@@ -1,12 +1,8 @@
 import { http, HttpResponse } from 'msw'
-import posts from '../data/posts';
+import posts, { getId } from '../data/posts';
 
 type CreatePostBody = {
     body: string;
-    imageUrl?: string;
-    authordId: string;
-    likeCount: number;
-    commentCount: number;
 }
 
 type Post = {
@@ -35,7 +31,6 @@ export const postsHandler = [
         const { postId } = params 
         const updatedPost: Post = await request.json() as Post;
         const prevPost = posts.find(post => post.id === postId)
-        await new Promise((resolve) => setTimeout(resolve, 4000))
 
         if(prevPost) {
             prevPost.body = updatedPost.body
@@ -47,6 +42,26 @@ export const postsHandler = [
 
         return HttpResponse.json({
             post: updatedPost
+        })
+    }),
+
+    http.post('/api/posts', async ({ request }) => {
+        const payload = await request.json() as CreatePostBody;
+        console.log(payload)
+        const newPost = {
+            id: getId(),
+            likesCount: 0,
+            commentsCount: 0,
+            imageUrl: "",
+            username: "Dummy",
+            name: "Dummy",
+            body: payload.body,
+            avatar: ""
+        }
+        
+        posts.unshift(newPost)
+        return HttpResponse.json({
+            status: 'success',
         })
     })
 

@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { useFeed } from "../api/getFeed";
 import Post from "./Post";
-import { Button } from "@/components/ui/button"
 
 export function Feed() {
     const { data, error, fetchNextPage, hasNextPage, isFetching, isFetchingNextPage, status} = useFeed();
@@ -10,7 +9,7 @@ export function Feed() {
     useEffect(() => {
         const observer = new IntersectionObserver(handleIntersection);
         const elementRef = bottomRef.current;
-        console.log(elementRef)
+        
         if (elementRef) observer.observe(elementRef);
 
         return () => {
@@ -21,7 +20,7 @@ export function Feed() {
     function handleIntersection(entries: any) {
         const firstEntry = entries[0];
         if (firstEntry.isIntersecting) {
-            console.log("hello");
+        
             fetchNextPage();
         }
     }
@@ -47,7 +46,6 @@ export function Feed() {
                 );
             })}
             <div ref={bottomRef} className="h-10"></div>
-            {/* <Button onClick={() => {fetchNextPage()}}>Load More data</Button> */}
         </section>
     );
 }

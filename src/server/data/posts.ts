@@ -24,6 +24,9 @@ function createRandomUser(): Post {
     };
 }
 
+export function getId() {
+    return faker.string.uuid();
+}
 
 for (let i = 0; i < 100; i++) {
     const user = createRandomUser();

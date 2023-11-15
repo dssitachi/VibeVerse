@@ -1,7 +1,10 @@
+import { CreatePost } from "@/features/feed/components/CreatePost";
 import { Bookmark, Feather, Home, LogOut, User2 } from "lucide-react";
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
 
 function Navbar() {
+    const [open, setOpen] = useState(false);
     return (
         <aside className="max-w-xs p-4 rounded h-screen fixed">
             <ul className="mt-12">
@@ -56,14 +59,15 @@ function Navbar() {
                 </li>
                 <li
                     className="py-4"
-                    
+                    onClick={() => {setOpen(true)}}
                 >
-                    <button className="hidden xl:block font-bold text-white bg-[#1DA1F2] px-4 py-2 rounded-lg w-36">
+                    {/* <button className="hidden xl:block font-bold text-white bg-[#1DA1F2] px-4 py-2 rounded-lg w-36">
                         Vibe
                     </button>
                     <button className="xl:hidden font-bold text-white bg-[#1DA1F2] px-4 py-4 rounded-full">
                     <Feather />
-                    </button>
+                    </button> */}
+                    <CreatePost  />
                 </li>
             </ul>
 

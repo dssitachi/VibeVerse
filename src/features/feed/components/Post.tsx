@@ -1,25 +1,17 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Bookmark, Heart, MessageSquare, Share } from "lucide-react";
 import { useUpdatePost } from "../api/updatePost";
 
-async function updatePost() {
-    return Promise.resolve({
-        id: 1
-    })
-}
 
 function Post({post}: {post: any}) {
 
     const updatePostMutation = useUpdatePost();
 
     function handleLikeClick() {
-        console.log('like clicked')
-        // updatePostMutation.mutate()
         updatePostMutation.mutate({...post, likesCount: post.likesCount + 1});
     }
     return (
-        <div className="flex p-2 gap-2 w-full border-b">
+        <div className="flex py-3 px-2 gap-2 w-full border-b">
             {/* Avatar */}
             <div>
                 <Avatar>
@@ -33,7 +25,7 @@ function Post({post}: {post: any}) {
             <div className="flex flex-col w-full">
                 {/* Username */}
                 <div className="flex  gap-1 items-baseline">
-                    <span className="font-bold"> {post.name} </span>
+                    <span className="font-semibold"> {post.name} </span>
                     <span className="text-slate-500 text-sm "> @{post.username}</span>
                     <span className="text-slate-500 text-sm "> . Oct 30</span>
                 </div>

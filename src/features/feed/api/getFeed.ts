@@ -3,7 +3,7 @@ import { useInfiniteQuery } from "@tanstack/react-query";
 
 
 async function fetchPosts ({ pageParam }: { pageParam: number} )  {
-    const res = await axios.get('/api/posts?cursor=' + pageParam)
+    const res = await axios.get('http://localhost:8080/posts?cursor=' + pageParam)
     return { posts: res.data.posts, next: res.data.next }
 }
 
@@ -14,6 +14,6 @@ export function useFeed() {
         queryKey: ['feed'],
         queryFn: fetchPosts,
         initialPageParam: 0,
-        getNextPageParam: (lastPage, pages) => {return lastPage.next}
+        getNextPageParam: (lastPage) => {return lastPage.next}
     });
 }

@@ -7,3 +7,5 @@ When I call next page ( on reaching the bottom tweet ), it should fire a new req
 
 either create a backend or use msw
 
+Add a post 
+React lazy loading

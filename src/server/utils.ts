@@ -1,7 +1,7 @@
-import jwt from "jsonwebtoken";
 
 import { JWT_SECRET } from "@/config";
 import { db } from "./db";
+
 export const hash = (str: string) => {
     let hash = 5381,
         i = str.length;
@@ -22,8 +22,8 @@ export function authenticate({email, password}: {email: string, password: string
     })
 
     if (user?.password === hash(password)) {
-        const sanitizedUser = { id: user.id, firstName: user.firstName, lastName: user.lastName, email: user.email };
-        const encodedToken = jwt.sign(sanitizedUser, JWT_SECRET);
+        const sanitizedUser = { id: user.id, name: user.name, username: user.username, email: user.email };
+        const encodedToken = sign(sanitizedUser, JWT_SECRET);
         return { user: sanitizedUser, jwt: encodedToken };
     }
 
@@ -49,7 +49,7 @@ export function requireAuth(request: any) {
         if(!user) {
             throw Error('Unauthorized')
         }
-        return { id: user.id, firstName: user.firstName, lastName: user.lastName, email: user.email };
+        return { id: user.id, name: user.name, username: user.username, email: user.email };
     } catch(error: any) {
         throw Error(error)
     }
