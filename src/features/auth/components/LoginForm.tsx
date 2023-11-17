@@ -6,7 +6,6 @@ import { useForm } from "react-hook-form";
 import { NavLink, useNavigate } from "react-router-dom";
 import { z } from "zod";
 import { loginWithEmailAndPassword } from "../api/login";
-import { axios } from "@/lib/axios";
 
 const formSchema = z.object({
     email: z.string().min(1, "Email is required"),
@@ -26,6 +25,7 @@ function LoginForm() {
         console.log(values);
         await loginWithEmailAndPassword(values);
         navigate('/');
+        console.log('eeeeeeeeeee')
     }
 
     // function go() {
@@ -94,8 +94,6 @@ function LoginForm() {
                 </NavLink>
                 .
             </p>
-
-            <Button>Check </Button>
         </>
     );
 }

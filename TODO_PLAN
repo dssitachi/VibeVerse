@@ -9,3 +9,10 @@ either create a backend or use msw
 
 Add a post 
 React lazy loading
+
+
+When I login, it should redirect to home
+
+and when I first go, it should redirect to login page
+
+Check if the user is authencated or not?
